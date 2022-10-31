@@ -1,8 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 export default function Home() {
+
+  useEffect(() => {
+    axios.post(`http://localhost:3000/api/auth/login?lang=ru`, {
+      email: 'ansagaang@gmail.com',
+      password: 'Lilansa727'
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
